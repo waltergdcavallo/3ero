@@ -1,0 +1,22 @@
+SELECT film.title, category.name
+FROM film, category, film_category
+WHERE (film_category.category_id=category.category_id) AND (film_category.film_id=film.film_id) AND category.name="Family"
+
+
+
+SELECT actor.last_name, count(actor.last_name) AS cantidad
+FROM actor
+GROUP BY actor.last_name
+
+
+
+SELECT first_name, last_name 
+FROM customer
+WHERE first_name="Terry" OR first_name="Jessie" OR first_name="Alice"
+
+
+
+SELECT customer.first_name, customer.last_name,customer.customer_id, SUM(amount) AS cantidad
+FROM payment, customer
+WHERE (customer.customer_id=payment.customer_id)
+GROUP BY customer.last_name ASC
