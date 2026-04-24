@@ -20,3 +20,56 @@ SELECT customer.first_name, customer.last_name,customer.customer_id, SUM(amount)
 FROM payment, customer
 WHERE (customer.customer_id=payment.customer_id)
 GROUP BY customer.last_name ASC
+
+
+
+
+SELECT concat(staff.first_name," ", staff.last_name) AS nombre_apellido, sum(payment.amount) AS cantidad
+FROM staff, payment
+WHERE (staff.staff_id=payment.staff_id) AND payment.payment_date BETWEEN "2005/01/01" AND "2005/12/31"
+GROUP BY nombre_apellido
+
+
+
+
+
+SELECT customer.customer_id, customer.email, COUNT(rental.rental_id) AS cantidad_peliculas
+FROM customer, rental
+WHERE (customer.customer_id=rental.customer_id)
+GROUP BY customer.customer_id DESC
+
+
+
+
+SELECT customer.customer_id, customer.email, COUNT(rental.rental_id) AS cantidad_peliculas
+FROM customer, rental
+WHERE (customer.customer_id=rental.customer_id)
+GROUP BY customer.customer_id ORDER BY cantidad_peliculas DESC
+LIMIT 5
+
+
+
+
+SELECT customer.first_name, customer.email, country.country
+FROM country, customer, city, address
+WHERE (customer.address_id=address.address_id) AND (address.city_id=city.city_id) AND (city.country_id=country.country_id) AND country.country="Canada"
+
+
+
+
+SELECT city.city_id, city.city, country.country, country.country_id
+FROM country, city
+WHERE (city.country_id=country.country_id) AND country.country="Spain"
+
+
+
+SELECT film.title, actor.first_name
+FROM film, actor, film_actor
+WHERE (film_actor.film_id=film.film_id) AND (film_actor.actor_id=actor.actor_id)
+ORDER BY film.title ASC;
+
+
+
+SELECT customer.first_name, customer.last_name, film.title, SUM(payment.amount) AS preciofinal, (preciofinal-4%)
+FROM customer, film, inventory, rental
+WHERE
