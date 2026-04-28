@@ -70,6 +70,6 @@ ORDER BY film.title ASC;
 
 
 
-SELECT customer.first_name, customer.last_name, film.title, SUM(payment.amount) AS preciofinal, (preciofinal-4%)
-FROM customer, film, inventory, rental
-WHERE
+SELECT customer.first_name, customer.last_name, film.title, (payment.amount*payment.discount_percentage/100) AS preciofinal
+FROM customer, film, inventory, rental, payment
+WHERE (customer.)
