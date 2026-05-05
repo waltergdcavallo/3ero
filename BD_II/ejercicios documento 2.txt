@@ -1,0 +1,35 @@
+SELECT customerName, customerNumber, creditLimit
+FROM customers
+ORDER BY creditLimit DESC
+LIMIT 5
+
+
+
+
+SELECT offices.officeCode, offices.city, offices.phone
+FROM offices
+WHERE offices.country<>"USA" AND offices.country<>"France"
+
+
+
+
+SELECT concat(customers.customerNumber," ", customers.contactFirstName, " ", customers.contactLastName) AS clientes, concat(employees.employeeNumber, " ", employees.firstName, " ", employees.lastName) AS empleados
+FROM customers, employees
+
+
+
+
+SELECT orders.orderNumber, customers.customerNumber, orders.status, orders.orderDate
+FROM orders, customers
+WHERE (orders.customerNumber=customers.customerNumber) AND orders.orderNumber=10165 OR orders.orderNumber=10287 OR orders.orderNumber=10310
+
+
+
+
+
+SELECT products.productCode, products.productName, min(products.buyPrice) AS precio
+FROM products
+
+
+
+
