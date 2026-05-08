@@ -4,18 +4,14 @@ ORDER BY creditLimit DESC
 LIMIT 5
 
 
-
-
 SELECT offices.officeCode, offices.city, offices.phone
 FROM offices
 WHERE offices.country<>"USA" AND offices.country<>"France"
 
 
 
-
 SELECT concat(customers.customerNumber," ", customers.contactFirstName, " ", customers.contactLastName) AS clientes, concat(employees.employeeNumber, " ", employees.firstName, " ", employees.lastName) AS empleados
 FROM customers, employees
-
 
 
 
@@ -25,11 +21,19 @@ WHERE (orders.customerNumber=customers.customerNumber) AND orders.orderNumber=10
 
 
 
-
-
 SELECT products.productCode, products.productName, min(products.buyPrice) AS precio
 FROM products
 
 
+SELECT products.productVendor, customers.customerName, orderdetails.quantityOrdered
+FROM products, orderdetails, orders, customers
+WHERE(products.productCode=orderdetails.productCode) AND (orderdetails.orderNumber=orders.orderNumber) AND (orders.customerNumber=customers.customerNumber)
+ORDER BY orderdetails.quantityOrdered DESC
+
+
+SELECT orders.orderNumber, orders.status, orderdetails.priceEach*orderdetails.quantityOrdered AS importe_total
+FROM orders, orderdetails
+WHERE (orders.orderNumber=orderdetails.orderNumber)
+ORDER BY orders.orderNumber DESC
 
 
