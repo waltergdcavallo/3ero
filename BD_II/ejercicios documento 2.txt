@@ -37,3 +37,13 @@ WHERE (orders.orderNumber=orderdetails.orderNumber)
 ORDER BY orders.orderNumber DESC
 
 
+SELECT customers.customerNumber, customers.customerName, orders.orderNumber, orders.status
+FROM customers, orders
+WHERE (customers.customerNumber=orders.customerNumber)  
+ORDER BY `orders`.`orderNumber` DESC
+
+
+continuar
+SELECT customers.customerNumber, customers.customerName, orders.orderNumber, orders.status
+FROM customers, orders
+WHERE (customers.customerNumber=orders.customerNumber) AND NOT EXISTS(SELECT orders.orderNumber FROM orders)
