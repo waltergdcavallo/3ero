@@ -43,7 +43,15 @@ WHERE (customers.customerNumber=orders.customerNumber)
 ORDER BY `orders`.`orderNumber` DESC
 
 
-continuar
-SELECT customers.customerNumber, customers.customerName, orders.orderNumber, orders.status
-FROM customers, orders
-WHERE (customers.customerNumber=orders.customerNumber) AND NOT EXISTS(SELECT orders.orderNumber FROM orders)
+SELECT customers.customerNumber, customers.customerName, orders.orderNumber
+FROM customers
+LEFT JOIN orders
+ON customers.customerNumber=orders.customerNumber
+WHERE orders.orderNumber IS null AND orders.status IS null;
+
+
+
+SELECT CONCAT(customers.contactFirstName, " ", customers.contactLastName) AS jefe, CONCAT(employees.firstName, " ", employees.lastName) AS personalAcargo
+FROM customers, employees
+WHERE (customers.salesRepEmployeeNumber=employees.employeeNumber)
+ORDER BY jefe DESC
