@@ -1,0 +1,6 @@
+CREATE VIEW PruebaV AS
+SELECT productos.nombre, productos.idCategoria, SUM(productos.precio) AS valorinventario
+FROM productos
+GROUP BY productos.idProducto ASC
+
+
