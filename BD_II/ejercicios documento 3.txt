@@ -4,3 +4,23 @@ FROM productos
 GROUP BY productos.idProducto ASC
 
 
+CREATE VIEW PruebaV AS
+SELECT productos.nombre, SUM(productos.precio) AS valorinventario
+FROM productos
+GROUP BY productos.idProducto ASC
+
+
+
+UPDATE productos
+SET precio=45, existencia=40
+WHERE nombre="Paleta de chocolate"
+
+
+
+SELECT productos.nombre, MIN(precio) FROM pruebav, productos 
+
+
+CREATE VIEW vistaprovprod AS
+SELECT proveedores.nombre, concat(productos.nombre, ", ", categoria.nombre) AS ProductoYCategoria, productos.existencia
+FROM proveedores, productos, categoria, detalle_producto_proveedor
+WHERE (detalle_producto_proveedor.idProducto=productos.idProducto) AND (detalle_producto_proveedor.idProveedor=proveedores.id) AND (productos.idCategoria=categoria.id)
