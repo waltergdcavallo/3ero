@@ -7,7 +7,6 @@ GROUP BY productos.idProducto ASC
 CREATE VIEW PruebaV AS
 SELECT productos.nombre, SUM(productos.precio) AS valorinventario
 FROM productos
-GROUP BY productos.idProducto ASC
 
 
 
