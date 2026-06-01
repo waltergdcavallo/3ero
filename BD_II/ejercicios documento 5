@@ -1,1 +1,6 @@
+create view codigoytotal as 
+select pedido.codigo_pedido, pago.total 
+from pago, pedido, cliente 
+where (pago.codigo_cliente=cliente.codigo_cliente) and (pedido.cogigo_cliente=cliente.codigo_cliente);
+
 
