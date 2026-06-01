@@ -1,5 +1,5 @@
 CREATE VIEW PruebaV AS
-SELECT productos.nombre, productos.idCategoria, SUM(productos.precio) AS valorinventario
+SELECT productos.nombre, productos.idCategoria, productos.precio*productos.existencia AS valorinventario
 FROM productos
 
 
