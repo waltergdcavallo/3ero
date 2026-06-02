@@ -15,7 +15,8 @@ WHERE nombre="Paleta de chocolate"
 
 
 
-SELECT productos.nombre, MIN(precio) FROM pruebav, productos 
+SELECT productos.nombre, MIN(precio) 
+FROM pruebav, productos 
 
 
 CREATE VIEW vistaprovprod AS
