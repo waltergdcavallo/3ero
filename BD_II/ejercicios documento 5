@@ -4,3 +4,6 @@ from pago, pedido, cliente
 where (pago.codigo_cliente=cliente.codigo_cliente) and (pedido.cogigo_cliente=cliente.codigo_cliente);
 
 
+create view datosempleado as 
+select concat(empleado.nombre, empleado.apellido1, empleado.apellido2) as empleado, oficina.ciudad 
+from empleado, oficina;
