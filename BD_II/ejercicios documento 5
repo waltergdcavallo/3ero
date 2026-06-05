@@ -1,9 +1,12 @@
 create view codigoytotal as 
 select pedido.codigo_pedido, pago.total 
 from pago, pedido, cliente 
-where (pago.codigo_cliente=cliente.codigo_cliente) and (pedido.cogigo_cliente=cliente.codigo_cliente);
+where (pago.codigo_cliente=cliente.codigo_cliente) and (pedido.codigo_cliente=cliente.codigo_cliente);
 
 
 create view datosempleado as 
-select concat(empleado.nombre, empleado.apellido1, empleado.apellido2) as empleado, oficina.ciudad 
-from empleado, oficina;
+select concat(e.nombre, ", ", e.apellido1," ", e.apellido2) as empleado, concat(j.nombre, ", ", j.apellido1," ", j.apellido2) as jefe 
+from empleado e left join empleado j on e.codigo_jefe=j.codigo_empleado
+;
+
+
