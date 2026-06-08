@@ -6,7 +6,12 @@ where (pago.codigo_cliente=cliente.codigo_cliente) and (pedido.codigo_cliente=cl
 
 create view datosempleado as 
 select concat(e.nombre, ", ", e.apellido1," ", e.apellido2) as empleado, concat(j.nombre, ", ", j.apellido1," ", j.apellido2) as jefe 
-from empleado e left join empleado j on e.codigo_jefe=j.codigo_empleado
-;
+from empleado e left join empleado j on e.codigo_jefe=j.codigo_empleado join oficina o on e.codigo_oficina=o.codigo_oficina;
+
+
+create view info_pedidos as 
+select pedido.codigo_pedido, pedido.fecha_pedido, pedido.fecha_esperada, pedido.fecha_entrega, cliente.nombre_cliente, pago.total 
+from pedido, cliente, pago 
+where(pedido.codigo_cliente=cliente.codigo_cliente) and (pago.codigo_cliente=cliente.codigo_cliente) order by pago.total desc
 
 
