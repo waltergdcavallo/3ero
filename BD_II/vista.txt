@@ -7,3 +7,7 @@ CREATE VIEW pruebavista AS
 SELECT pedidos.id, detalle_pedidos.monto, pedidos.fecha,pedidos.estado
 FROM pedidos, detallepedidos
 WHERE (pedidos.id=detalle_pedidos.idp)
+
+
+C:\xampp\mysql\bin>mysqldump -u root -p bdaexportar >C:\usuario\alumno\bd.sql
+C:\xampp\mysql\bin>mysqldump -u root -p -all-databases >C:\usuario\alumno\bd.sql
