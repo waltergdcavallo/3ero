@@ -1,0 +1,127 @@
+a) Crear la base de datos BDAlmacen2026, con cotejamiento utf8mb4_unicode_ci
+
+
+b) Crear las tablas y relaciones entre las tablas mediante consola de comandos, 
+con sus correspondientes claves primarias (Primary key), y claves externas (Foreign key)
+si estas últimas existen. 
+
+
+c) Insertar los datos en cada una de las tablas, siguiendo el orden que corresponda.
+
+Tabla CATEGORIA
+
+INSERT INTO Categoria (identificador, nombre) VALUES
+(1,'Tornilleria'),
+(2,'Herramientas'),
+(3,'Electricidad'),
+(4,'Hidraulica'),
+(5,'Pintura'),
+(6,'Ferreteria'),
+(7,'Seguridad'),
+(8,'Soldadura'),
+(9,'Automotor'),
+(10,'Construccion'),
+(11,'Carpinteria'),
+(12,'Jardineria'),
+(13,'Lubricantes'),
+(14,'Iluminacion'),
+(15,'Electronica');
+
+
+Tabla PIEZA
+
+INSERT INTO Pieza
+(codigo, nombre, precio, stock, categoria_id, deposito_id)
+VALUES
+(1,'Tornillo M6',120.50,500,1,1),
+(2,'Martillo',3500.00,80,2,2),
+(3,'Cable 2mm',450.00,300,3,3),
+(4,'Valvula PVC',890.00,120,4,4),
+(5,'Pintura Blanca 4L',7200.00,40,5,5),
+(6,'Tuerca M8',80.00,1000,6,5),
+(7,'Casco Seguridad',9500.00,35,7,4),
+(8,'Electrodo E6013',250.00,600,8,3),
+(9,'Filtro Aceite',1800.00,90,9,2),
+(10,'Cemento 50Kg',5200.00,70,10,1),
+(11,'Tablon Pino',4200.00,55,11,1),
+(12,'Manguera Jardin',1500.00,100,12,2),
+(13,'Aceite SAE 20W50',3100.00,130,13,3),
+(14,'Lampara LED 12W',900.00,220,14,4),
+(15,'Resistencia 220 Ohm',15.00,5000,15,5);
+
+
+Tabla DEPOSITO
+
+INSERT INTO Deposito (identificador, codigo, ubicacion) VALUES
+(1,'DEP001','Centro'),
+(2,'DEP002','Candioti Norte'),
+(3,'DEP003','Candioti Sur'),
+(4,'DEP004','Barrio Constituyentes'),
+(5,'DEP005','Barrio Guadalupe');
+
+
+Tabla CUENTA
+
+INSERT INTO Cuenta
+(identificador, nombrebanco, cbu, proveedor_codigo)
+VALUES
+(1,'Banco Nacion','2850590940090418135201',1),
+(2,'Banco Provincia','2850590940090418135202',2),
+(3,'Santander','2850590940090418135203',3),
+(4,'BBVA','2850590940090418135204',4),
+(5,'Galicia','2850590940090418135205',5),
+(6,'Macro','2850590940090418135206',6),
+(7,'HSBC','2850590940090418135207',7),
+(8,'ICBC','2850590940090418135208',8),
+(9,'Patagonia','2850590940090418135209',9),
+(10,'Credicoop','2850590940090418135210',10),
+(11,'Banco Nacion','2850590940090418135211',11),
+(12,'Banco Provincia','2850590940090418135212',12),
+(13,'Santander','2850590940090418135213',13),
+(14,'BBVA','2850590940090418135214',14),
+(15,'Galicia','2850590940090418135215',15);
+
+
+Tabla PROVEEDOR
+
+INSERT INTO Proveedor
+(codigo, cuil, razonsocial, direccion, ciudad, provincia)
+VALUES
+(1,'20-11111111-1','Metal Sur SA','Av. Roca 100','Buenos Aires','Buenos Aires'),
+(2,'20-22222222-2','Industrial Norte SRL','San Martin 250','Cordoba','Cordoba'),
+(3,'20-33333333-3','Ferremax SA','Belgrano 500','Rosario','Santa Fe'),
+(4,'20-44444444-4','TecnoPiezas SRL','Mitre 120','Mendoza','Mendoza'),
+(5,'20-55555555-5','Suministros Delta','Colon 300','La Plata','Buenos Aires'),
+(6,'20-66666666-6','Electro Sur','Rivadavia 700','Mar del Plata','Buenos Aires'),
+(7,'20-77777777-7','Hidra Parts','Sarmiento 150','Salta','Salta'),
+(8,'20-88888888-8','Soldar SA','9 de Julio 800','Neuquen','Neuquen'),
+(9,'20-99999999-9','AutoFix SRL','Brown 350','San Juan','San Juan'),
+(10,'20-10101010-0','ConstruMarket','Italia 450','Resistencia','Chaco'),
+(11,'20-11112222-1','Maderas del Centro','España 210','Posadas','Misiones'),
+(12,'20-12121212-2','Jardin Verde','Laprida 670','Parana','Entre Rios'),
+(13,'20-13131313-3','LubriMax','Urquiza 890','Tucuman','Tucuman'),
+(14,'20-14141414-4','Lumen SA','Moreno 110','Santa Fe','Santa Fe'),
+(15,'20-15151515-5','Electron Parts','Alvear 550','Rio Gallegos','Santa Cruz');
+
+
+
+Tabla SUMINISTRA
+
+INSERT INTO Suministra
+(proveedor_codigo, pieza_codigo, cantidad, fecha)
+VALUES
+(1,1,100,'2024-01-10'),
+(2,2,25,'2024-01-15'),
+(3,3,200,'2024-01-20'),
+(4,4,50,'2024-01-25'),
+(5,5,20,'2024-02-01'),
+(6,6,500,'2024-02-05'),
+(7,7,15,'2024-02-10'),
+(8,8,300,'2024-02-15'),
+(9,9,40,'2024-02-20'),
+(10,10,60,'2024-02-25'),
+(11,11,30,'2024-03-01'),
+(12,12,45,'2024-03-05'),
+(13,13,80,'2024-03-10'),
+(14,14,150,'2024-03-15'),
+(15,15,1000,'2024-03-20');
