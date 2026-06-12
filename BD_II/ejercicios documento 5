@@ -15,3 +15,17 @@ from pedido, cliente, pago
 where(pedido.codigo_cliente=cliente.codigo_cliente) and (pago.codigo_cliente=cliente.codigo_cliente) order by pago.total desc
 
 
+
+create view masvendidos as 
+select producto.gama, detalle_pedido.cantidad 
+from producto, detalle_producto 
+where (producto.codigo_producto=detalle_pedido.codigo_producto)
+order by detalle_pedido.cantidad desc
+
+
+
+create view menosvendidos as 
+select pedido.codigo_pedido, cliente.pais 
+from producto, detalle_pedido, cliente, pedido 
+where (pedido.codigo_pedido=detalle_pedido.codigo_pedido) and (pedido.codigo_cliente=cliente.codigo_cliente) 
+group by cliente.pais asc;
