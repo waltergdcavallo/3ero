@@ -25,7 +25,7 @@ require_once "conexion.php";
     } else{
         $error.="Error en la edición";
         header("Location:form_editar_usuario.php?mensaje=".$error);
-}
+    }
 
 // vendedor
     $id_usuario=$_POST['id_usuario'];

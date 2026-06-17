@@ -21,6 +21,11 @@ $stmt2->bind_param("i", $id_detalle_venta);
 
 $stmt2->execute();
 
-header("Location: listado_ventas.php");
+if ($stmt->execute() && $stmt2->execute()){
+    header("Location:form_editar_usuario.php?mensaje=ok");
+    } else{
+        $error.="Error en la eliminación";
+        header("Location:form_editar_usuario.php?mensaje=".$error);
+    }
 
 ?>

@@ -11,6 +11,11 @@ $stmt->bind_param("i", $id_usuario);
 
 $stmt->execute();
 
-header("Location: listado_usuarios.php");
+if ($stmt->execute()){
+    header("Location:../listados/listado_usuarios.php?mensaje=ok");
+    } else{
+        $error.="Error en la eliminación";
+        header("Location:../listados/listado_usuarios.php?mensaje=".$error);
+    }
 
 ?>

@@ -11,6 +11,11 @@ $stmt->bind_param("i", $id_producto);
 
 $stmt->execute();
 
-header("Location: listado_productos.php");
+if ($stmt->execute()){
+    header("Location:../listados/listado_productos.php?mensaje=ok");
+    } else{
+        $error.="Error en la eliminación";
+        header("Location:../listados/listado_productos.php?mensaje=".$error);
+    }
 
 ?>

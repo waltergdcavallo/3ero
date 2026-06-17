@@ -11,6 +11,11 @@ $stmt->bind_param("i", $id_beneficio);
 
 $stmt->execute();
 
-header("Location: listado_beneficios.php");
+if ($stmt->execute()){
+    header("Location:../listados/listado_beneficios.php?mensaje=ok");
+    } else{
+        $error.="Error en la eliminación";
+        header("Location:../listados/listado_beneficios.php?mensaje=".$error);
+    }
 
 ?>
