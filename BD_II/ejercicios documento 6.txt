@@ -1,0 +1,14 @@
+create database BDAlmacen character set utf8m64 collate utf8m64_unicode_ci
+
+ create table Categoria(identificador int primary key, nombre varchar(45));
+
+
+create table Deposito(identificador int primary key, codigo int, ubicacion varchar(50));
+
+create table Cuenta(identificador int primary key, nombrebanco varchar(50), cbu int, proveedor_codigo varchar(50))
+
+
+create table proveedor(codigo int primary key, cuil varchar(30), razonsocial varchar(50), direccion varchar(50), ciudad varchar(50), provincia varchar(50))
+
+
+create table suministra(proveedor_codigo int, pieza_codigo int, cantidad int, fecha date);
