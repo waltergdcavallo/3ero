@@ -1,3 +1,0 @@
-//vendedor
-
-//admin
