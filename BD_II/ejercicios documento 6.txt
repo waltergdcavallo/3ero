@@ -1,14 +1,22 @@
-create database BDAlmacen character set utf8m64 collate utf8m64_unicode_ci
+create database BDAlmacen character set utf8mb4 collate utf8mb4_unicode_ci
 
 create table Categoria(identificador int primary key, nombre varchar(45));
 
 
-create table Deposito(identificador int primary key, codigo int, ubicacion varchar(50));
-
-create table Cuenta(identificador int primary key, nombrebanco varchar(50), cbu int)
+create table Deposito(identificador int primary key, codigo varchar(50), ubicacion varchar(50));
 
 
-create table proveedor(codigo int primary key, cuil varchar(30), razonsocial varchar(50), direccion varchar(50), ciudad varchar(50), provincia varchar(50), idcuenta int not null, foreign key (idcuenta) references cuenta (identificador) on delete cascade on update cascade, ) engine=InnoDB
+create table proveedor(codigo int primary key, cuil varchar(30), razonsocial varchar(50), direccion varchar(50), ciudad varchar(50), provincia varchar(50));
 
 
-create table suministra(proveedor_codigo int, pieza_codigo int, cantidad int, fecha date);
+create table Cuenta(identificador int primary key, nombrebanco varchar(50), cbu varchar(255), proveedor_codigo int, foreign key (proveedor_codigo) references proveedor(codigo) on delete cascade on update cascade) engine=InnoDB;
+
+
+create table pieza(codigo int primary key, stock int, nombre varchar(50), precio int, deposito_id int, categoria_id int, foreign key (deposito_id) references deposito (identificador) on delete cascade on update cascade, foreign key (categoria_id) references categoria (identificador) on delete cascade on update cascade) engine=InnoDB;
+
+
+create table suministra(cantidad int(100), fecha date, proveedor_codigo int, pieza_codigo int, foreign key (proveedor_codigo) references proveedor(codigo) on delete cascade on update cascade, foreign key (pieza_codigo) references pieza(codigo) on delete cascade on update cascade) engine=InnoDB;
+
+
+create view vista_informacion_piezas as 
+select pieza.codigo, pieza.nombre, pieza.precio, pieza.stock, (categoria.nombre) as categoria, (proveedor.codigo) as proveedor, suministra.cantidad, suministra.fecha from pieza, categoria, proveedor, suministra where (suministra.proveedor_codigo=proveedor.codigo) and (suministra.pieza_codigo=pieza.codigo) and (pieza.categoria_id=categoria.identificador) group by pieza.codigo;
