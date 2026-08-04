@@ -1,0 +1,14 @@
+DELIMITER //
+
+CREATE PROCEDURE Ejemplo(in id... int)
+BEGIN
+
+SELECT * FROM productos WHERE id=id...;
+UPDATE productos SET stock=stock+10 WHERE id=id...;
+
+END//
+DELIMITER;
+
+LLAMADO:
+
+CALL Ejemplo(3);
