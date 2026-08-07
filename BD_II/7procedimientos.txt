@@ -1,0 +1,7 @@
+DELIMITER //
+CREATE DEFINER=`root`@`localhost` PROCEDURE `fechanomequipo`(idp int)
+BEGIN
+	DECLARE idp int;
+    SELECT player.birthday, player.first_name, team.caption FROM team, player WHERE (player.current_team_id=team.id) AND player.id=idp;
+END//
+DELIMITER ;
