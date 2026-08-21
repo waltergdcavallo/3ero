@@ -8,11 +8,19 @@ DELIMITER ;
 
 
 DELIMITER //
-CREATE DEFINER=`root`@`localhost` PROCEDURE `fechanomequipo`(player.first_name varchar, player.last_name varchar)
+CREATE PROCEDURE `fechanomequipo`(player.first_name varchar, player.last_name varchar)
 BEGIN
 	DECLARE nombre varchar;
 	DECLARE apellido varchar;
     SELECT player.birthday, player.first_name, team.caption FROM team, player WHERE (player.current_team_id=team.id) AND player.first_name=nombre AND player.last_name=apellido;
+END//
+DELIMITER ;
+
+
+DELIMITER //
+CREATE PROCEDURE 'aumentarprecio' (nombreprod varchar)
+BEGIN
+    UPDATE productos SET productos.precio=productos.precio*1.5 WHERE productos.nombre=nombreprod;
 END//
 DELIMITER ;
 
