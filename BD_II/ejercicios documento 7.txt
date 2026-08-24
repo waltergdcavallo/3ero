@@ -1,0 +1,77 @@
+DELIMITER //
+CREATE PROCEDURE fechanomequipo(idp int)
+BEGIN
+	DECLARE idp int;
+    SELECT player.birthday, player.first_name, team.caption FROM team, player WHERE (player.current_team_id=team.id) AND player.id=idp;
+END//
+DELIMITER ;
+
+
+DELIMITER //
+CREATE PROCEDURE fechanomequipo(IN player.first_name varchar, player.last_name varchar)
+BEGIN
+	DECLARE nombre varchar;
+	DECLARE apellido varchar;
+    SELECT player.birthday, player.first_name, team.caption FROM team, player WHERE (player.current_team_id=team.id) AND player.first_name=nombre AND player.last_name=apellido;
+END//
+DELIMITER ;
+
+
+DELIMITER //
+CREATE PROCEDURE aumentarprecio (IN nombreprod varchar)
+BEGIN
+    UPDATE productos SET productos.precio=productos.precio*1.5 WHERE productos.nombre=nombreprod;
+END//
+DELIMITER ;
+
+
+DELIMITER //
+CREATE PROCEDURE aumentarprecio2
+BEGIN
+    UPDATE productos SET productos.precio=productos.precio*1.5 WHERE productos.precio>10;
+END//
+DELIMITER ;
+
+
+DELIMITER //
+CREATE PROCEDURE agregarproducto(IN nombreprod varchar, precioprod int, fecha date, categoria int, existenciaprod int)
+BEGIN
+    INSERT INTO productos VALUES(nombre=nombreprod, precio=precioprod, fecha_alta=fecha, idCategoria=categoria, existencia=existenciaprod);
+END//
+DELIMITER ;
+
+
+DELIMITER //
+CREATE PROCEDURE mostrar(IN categoria int)
+BEGIN
+    SELECT producto.nombre, producto.precio, productos.existencia FROM productos, categoria WHERE (productos.idCategoria=categoria.id) AND productos.idCategoria=categoria;
+END//
+DELIMITER ;
+
+
+DELIMITER //
+CREATE PROCEDURE actualizaAntiguedad(IN id int)
+BEGIN
+    SELECT NOM, TIMESTAMPDIFF(YEAR, FECHA_ALTA, CURDATE()) AS antiguedad FROM profesores WHERE IDPROF=id;
+END//
+DELIMITER ;
+
+
+DELIMITER //
+CREATE PROCEDURE ActualizaInventario(IN idprod Int)
+BEGIN
+	DECLARE stock Int;
+	IF(idprod IS NOT NULL) THEN
+		SELECT existencia Into stock FROM productos WHERE idproducto=idprod;
+		IF(stock<=10) THEN
+			UPDATE productos SET existencia=existencia+100 WHERE idproducto=idprod;
+		ELSE
+			UPDATE productos SET existencia=existencia+50 WHERE idproducto=idprod;
+		END IF;
+	ELSE
+		UPDATE productos SET existencia=existencia+100 WHERE existencia<=10;
+		UPDATE productos SET existencia=existencia+50 WHERE existencia>10;
+	END IF;
+END//
+DELIMITER ;
+
