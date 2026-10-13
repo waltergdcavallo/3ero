@@ -1,3 +1,5 @@
+CREATE DATABASE tecnicaturas CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+
 CREATE USER 'admin40'@'localhost';
 
 CREATE USER 'admin2'@'localhost';
@@ -7,7 +9,5 @@ CREATE USER 'docente'@'localhost';
 CREATE USER 'estudiante'@'localhost';
 
 CREATE USER 'auxiliar'@'localhost';
-
-CREATE DATABASE tecnicaturas CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 
 GRANT ALL PRIVILEGES ON tecnicaturas.* TO 'admin2'@'locahost';
