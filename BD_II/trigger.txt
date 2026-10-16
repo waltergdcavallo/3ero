@@ -1,0 +1,22 @@
+DELIMITER //
+CREATE TRIGGER nombretrigger
+MOMENTO(AFTER O BEFORE) EVENTO(INSERT, UPDATE O DELETE) ON tablaAsociada
+FOR EACH ROW
+BEGIN
+  (cuerpo del trigger)
+END//
+DELIMITER ;
+
+Ejemplo:
+
+DELIMITER //
+CREATE TRIGGER descontarStock
+AFTER INSERT ON ventas
+FOR EACH ROW
+BEGIN
+  UPDATE Productos SET stock=stock-new.cantidad
+  WHERE codigo=new.codigoproducto;
+END//
+DELIMITER ;
+
+sirven para validar datos, realizar cálculos, generar copias de datos como medida de seguridad.
