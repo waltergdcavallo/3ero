@@ -10,4 +10,6 @@ CREATE USER 'estudiante'@'localhost';
 
 CREATE USER 'auxiliar'@'localhost';
 
+GRANT ALL PRIVILEGES ON *.* TO 'admin40'@'locahost' WITH GRANT OPTION;
+
 GRANT ALL PRIVILEGES ON tecnicaturas.* TO 'admin2'@'locahost';
