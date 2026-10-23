@@ -1,1 +1,11 @@
-
+DELIMITER //
+CREATE FUNCTION verdaderofalso(numero int)
+	returns varchar(5) DETERMINISTIC
+BEGIN
+CASE
+   	WHEN numero%2=0 THEN
+   	RETURN 'par';
+    ELSE RETURN 'impar';
+END CASE;
+END//
+DELIMITER ;
