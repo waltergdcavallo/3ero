@@ -9,3 +9,19 @@ CASE
 END CASE;
 END//
 DELIMITER ;
+
+DELIMITER //
+CREATE FUNCTION mayor3(valor1 int, valor2 int, valor3 int)
+RETURNS int DETERMINISTIC
+BEGIN
+	if valor1>valor2 THEN
+    	if valor1>valor3 THEN
+        	RETURN valor1;
+        ELSE
+        	RETURN valor3;
+        END IF;
+    ELSEIF valor2>valor3 THEN
+    	RETURN valor2;
+    END IF;
+END//
+DELIMITER ;
