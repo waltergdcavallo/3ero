@@ -25,3 +25,32 @@ BEGIN
     END IF;
 END//
 DELIMITER ;
+
+DELIMITER //
+CREATE FUNCTION dias(num int)
+RETUNRS int
+BEGIN
+	CASE
+    	WHEN num=1 THEN RETURN 'lunes';
+        WHEN num=2 THEN RETURN 'martes';
+        WHEN num=3 THEN RETURN 'miercoles';
+        WHEN num=4 THEN RETURN 'jueves';
+        WHEN num=5 THEN RETURN 'viernes';
+        WHEN num=6 THEN RETURN 'sabado';
+        WHEN num=7 THEN RETURN 'domingo';
+        ELSE RETURN 'no es un dia de la semana';
+    END CASE;
+END//
+DELIMITER;
+
+
+DELIMITER //
+CREATE FUNCTION CalculaMontoInvertido(nombreprod varchar(45))
+	RETURNS int DETERMINISTIC
+BEGIN
+	DECLARE total int;
+	SELECT (precio*existencia) INTO total FROM productos WHERE nombre=nombreprod;
+    SET total=total;
+    RETURN total;
+END//
+DELIMITER ;
