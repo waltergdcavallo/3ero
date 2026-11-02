@@ -4,6 +4,8 @@ MOMENTO(AFTER O BEFORE) EVENTO(INSERT, UPDATE O DELETE) ON tablaAsociada
 FOR EACH ROW
 BEGIN
   (cuerpo del trigger)
+  OLD variable(DELETE, UPDATE)
+  NEW variable(INSERT, UPDATE)
 END//
 DELIMITER ;
 
