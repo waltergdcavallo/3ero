@@ -1,0 +1,12 @@
+DELIMITER //
+CREATE FUNCTION nombre(parámetro tipo_de_dato)
+RETURNS tipo_de_dato DETERMINISTIC
+BEGIN
+  codigo
+  DECLARE nombre tipo_de_dato DEFAULT=0 o "";
+  SELECT fila INTO nombre;
+  RETURN valor;
+END// 
+DELIMITER ;
+
+DROP FUNCTION IF EXIST nombre;
