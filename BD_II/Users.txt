@@ -1,0 +1,9 @@
+CREATE USER "nombre"@"localhost" IDETIFIED BY "contraseña";
+
+GRANT (ALL, CREATE, DROP, DELETE, INSERT, SELECT, UPDATE) PRIVILEGES ON *.* (BASE DE DATOS . TABLA) TO "nombre"@"localhost";
+
+SHOW GRANTS FOR "nombre"@"localhost";
+
+REVOKE (ALL, CREATE, DROP, DELETE, INSERT, SELECT, UPDATE) ON *.* (BASE DE DATOS . TABLA) FROM "nombre"@"localhost";
+
+DROP USER "nombre"@"localhost";
